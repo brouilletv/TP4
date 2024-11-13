@@ -18,15 +18,14 @@ if projet == 1:
             self.message = ""
 
         def set_string(self):
-            self.message = message
+            self.message = str(input(f"Quelle est votre message?"))
 
         def print_string(self):
-            self.message = message.upper()
-            print(f"{self.message}")
+            print(f"{self.message.upper()}")
 
-    message = input(f"Quelle est votre message?")
-    StringFoo().set_string()
-    StringFoo().print_string()
+    string = StringFoo()
+    string.set_string()
+    string.print_string()
 
 # calcul l'aire d'un rectangle
 elif projet == 2:
@@ -126,20 +125,23 @@ elif projet == 6:
         intelligence: int
         sagesse: int
         charisme: int
+        nom: str
 
 
     class HeroDnd:
         def __init__(self):
             self.data = HeroData(r.randint(1, 20), r.randint(1, 20), r.randint(1, 20),
-                                 r.randint(1, 20), r.randint(1, 20), r.randint(1, 20))
+                                 r.randint(1, 20), r.randint(1, 20), r.randint(1, 20),
+                                 str(input(f"quelle est le nom du hero?")))
 
         def afficher_infos(self):
             print(f"force: {self.data.force} \ndexterité: {self.data.dexterite}"
                   f" \nconstitution: {self.data.constitution} \nintelligence: {self.data.intelligence}"
-                  f" \nsagesse: {self.data.sagesse} \ncharisme: {self.data.charisme} \n")
+                  f" \nsagesse: {self.data.sagesse} \ncharisme: {self.data.charisme} "
+                  f" \nnom: {self.data.nom}")
 
         def dice_roll(self):
-            choix = int(input("stat: \n1-force \n2-dexterité \n3-constitution"
+            choix = int(input(f"stat: \n1-force \n2-dexterité \n3-constitution"
                               " \n4-intelligence \n5-sagesse \n6-charisme"))
             if choix == 1:
                 print(f"you rolled  a {self.data.force + r.randint(1, 6)} in force")
